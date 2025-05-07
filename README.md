@@ -1,5 +1,4 @@
 # GPUs_comparison
-# GPUs_comparison
 
 A comprehensive analysis and comparison of cloud GPU providers for machine learning and AI workloads.
 
