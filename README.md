@@ -7,7 +7,7 @@ This repository contains a detailed analysis of various cloud GPU providers, com
 
 ## Repository Contents
 
-- `interactive_table.html`: Interactive comparison table of GPU providers with detailed features including:
+- [`interactive_table.html`](interactive_table.html): Interactive comparison table of GPU providers with detailed features including:
   - Security & Verification
   - Pricing & Billing
   - Storage & Bandwidth Costs
@@ -15,9 +15,11 @@ This repository contains a detailed analysis of various cloud GPU providers, com
   - Instance Types & Deployment Methods
 
 ### Visualizations
-- `h100_prices.png`: Price comparison specifically for H100 GPU instances across providers
-- `minimum_prices.png`: Analysis of minimum pricing across different GPU types
-- `combined_prices.png`: Comprehensive price comparison across all GPU types and providers
+- [`h100_prices.png`](h100_prices.png): Price comparison specifically for H100 GPU instances across providers
+- [`minimum_prices.png`](minimum_prices.png): Analysis of minimum pricing across different GPU types
+- [`combined_prices.png`](combined_prices.png): Comprehensive price comparison across all GPU types and providers
+
+![Combined GPU Prices](combined_prices.png)
 
 ## Key Findings
 
@@ -48,7 +50,7 @@ Each provider is evaluated based on:
 
 ## Usage
 
-Open `interactive_table.html` in a web browser to explore the detailed comparison table with features like:
+Open [`interactive_table.html`](interactive_table.html) in a web browser to explore the detailed comparison table with features like:
 - Search functionality across all columns
 - Column visibility toggles
 - Sorting capabilities
