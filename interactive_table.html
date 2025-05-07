@@ -1,0 +1,337 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Interactive Markdown Table Viewer</title>
+        
+        <!-- DataTables CSS -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/colreorder/1.5.5/css/colReorder.dataTables.min.css">
+        
+        <!-- jQuery -->
+        <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        
+        <!-- DataTables JS -->
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/colreorder/1.5.5/js/dataTables.colReorder.min.js"></script>
+        
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 20px;
+                color: #333;
+            }
+            .container {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            table {
+                width: 100%;
+            }
+            th {
+                background-color: #009879;
+                color: white;
+            }
+            .feature-col {
+                font-weight: bold;
+            }
+            .dt-button {
+                padding: 5px 10px;
+                margin-right: 5px;
+                background-color: #009879;
+                color: white;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+            .dt-button:hover {
+                background-color: #007f67;
+            }
+            .controls {
+                margin-bottom: 20px;
+            }
+            .dataTables_wrapper {
+                margin-top: 20px;
+            }
+            .table-description {
+                margin-bottom: 20px;
+                line-height: 1.5;
+            }
+            .note {
+                margin-top: 20px;
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Interactive Markdown Table Viewer</h1>
+            
+            <div class="table-description">
+                <p>This interactive table viewer allows you to:</p>
+                <ul>
+                    <li>Search for specific content across all columns</li>
+                    <li>Show/hide columns for better readability</li>
+                    <li>Sort by any column</li>
+                    <li>Reorder columns by drag and drop</li>
+                </ul>
+            </div>
+            
+            <div class="controls">
+                <label for="search">Search: </label>
+                <input type="text" id="search" placeholder="Type to search across all columns">
+            </div>
+            
+            <table id="dataTable" class="display" style="width:100%">
+                <thead>
+                    <tr>
+    <th>Feature/Parameter</th>
+<th>RunPod</th>
+<th>Lambda Labs</th>
+<th>Vast.ai</th>
+<th>TensorDock</th>
+<th>Prime Intellect</th>
+<th>Hyperstack</th>
+<th>Massed Compute</th>
+<th>Cudo Compute</th>
+<th>Akash</th>
+<th>Backpropo</th>
+<th>DataCrunch</th>
+<th>E2E Cloud</th>
+<th>Hydrahost</th>
+<th>Hyperbolic</th>
+<th>Jarvislabs</th>
+<th>Shadeform</th>
+<th>Thundercompute</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+    <tr>
+<td class="feature-col">Security & Verification</td>
+<td>Secure Cloud and Community Cloud; Only RunPod-vetted machines</td>
+<td>Working on security certifications (available end of 2025); Only Lambda-provided machines</td>
+<td>Verified Hosts and Datacenter Partners; Weekly automatic and random verification (manual verification only for high-end machines ($10k+) and datacenters); Many unverified providers (IP identifiable)</td>
+<td>VMs fully isolated; No SSH access for hosts; Agent detects suspicious activity</td>
+<td>Secure (more reliable) and community (less uptime) cloud options; 2FA and SSH key support; SOC2 and GDPR-compliant</td>
+<td>Data centers in Europe (limited availability) and North America; SSH access provided</td>
+<td>Almost GDPR compliant (90% done). Currently servers in US Tier 3 data centers. Owns all infrastructure; Enterprise-level security protocols</td>
+<td>GDPR-compliant; Hypervisor isolation; DPA & TOMs; EU data residency</td>
+<td>Decentralized platform; Authorization via keys</td>
+<td>Tier III data center; Network isolation</td>
+<td>EU data protection and GDPR compliant</td>
+<td>24/7 monitored infrastructure; On-site security</td>
+<td>Enterprise-grade security</td>
+<td>Proprietary verification technology (PoSP)</td>
+<td>Isolated environments with private networking</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td class="feature-col">Pricing & Billing</td>
+<td>From $0.12/hr (Community - RTX 2000) or $0.28/hr (Secure - RTX 2000 Ada); H100 PCIe: $2.39/hr; Pay-per-second</td>
+<td>From $0.50/hr (NVIDIA Quadro RTX 6000); H100 PCIe: $2.49/hr; One-minute billing (post-paid)</td>
+<td>From $0.06/hr (GTX 1660 S); H100 PCIe: $2.61/hr; Pay-per-second;</td>
+<td>From $0.10/hr (RTX A4000 16GB); H100 SXM5: $2.85/hr; Pay-as-you-go; Auto-deletion at $0 balance</td>
+<td>From $0.16/hr (Community - A4000) or 0.35/hr (Secure); H100 PCIe: $2.32/hr; Pay-per-second; Auto-deletion at $0 balance</td>
+<td>From $0.50/hr (RTX A6000/A40); H100 PCIe: $1.90/hr; H100 SXM: $3.00/hr; Pay-per-minute; 1-week suspension for data recovery</td>
+<td>H100 PCIe: $2.35/hr; A30: $0.25/hr</td>
+<td>From $0.30/hr (RTX A4000); H100 PCIe: $2.45/hr; Pay-per-second;</td>
+<td>From $0.08/hr (P100); H100: $1.25/hr</td>
+<td>From $0.36/hr (RTX 3090)</td>
+<td>From $0.24/hr (V100 - Public Cloud); H100: $2.19/hr; Private cloud only for multiple high-performant GPUs; Pay-per-second; Auto-deletion at $0 balance</td>
+<td>From $0.88/hr (L40S); H100: $1.86/hr; $213$ Startup credits for startups; 17% discount on monthly billing post credit period;</td>
+<td>From $0.30/hr (RTX A4000); H100 PCIe: $3.00/hr</td>
+<td>From $0.16/hr (RTX 3070); H100: $1.5/hr; Autonomous resource rental</td>
+<td>From $0.39/hr (RTX 5000); H100: $2.99/hr; Per-minute billing;</td>
+<td>From $0.15/hr (A4000); H100: $1.90/hr</td>
+<td>From $0.27/hr (T4); H100: $1.47/hr; Pay-per-minute;</td>
+</tr>
+<tr>
+<td class="feature-col">Storage & Bandwidth Costs</td>
+<td>Storage costs only</td>
+<td>Storage costs only</td>
+<td>Variable storage and bandwidth costs; Continues billing for storage even if no balance</td>
+<td>Storage costs only</td>
+<td>Storage costs only</td>
+<td>Storage costs only</td>
+<td>No bandwidth overcharge; More storage with NFS mount, otherwise only the one associated with GPU</td>
+<td>Storage costs only; Storage billed until deleted</td>
+<td>-</td>
+<td>Free for active environments; $0.05/GB/month idle; No bandwith costs</td>
+<td>-</td>
+<td>Variable storage costs; Billing continues until instance terminated</td>
+<td>Variable costs</td>
+<td>-</td>
+<td>Storage: $0.00014/GB/hour</td>
+<td>-</td>
+<td>Disk: $0.15/GB/month; Snapshots: $0.075/GB/month</td>
+</tr>
+<tr>
+<td class="feature-col">GPU Availability</td>
+<td>Wide selection, secure machines</td>
+<td>Limited selection</td>
+<td>Wide selection from datacenters and individuals</td>
+<td>Wide selection, most from certified datacenters</td>
+<td>Wide selection, secure machines</td>
+<td>Limited selection (H100, A100, L40, A6000, A4000)</td>
+<td>Wide selection (limited availability)</td>
+<td>Wide selection (H100, A40, A100, V100, RTX A4000, RTX A5000, RTX A6000)</td>
+<td>Wide selection (H100, A100, A6000, etc.)</td>
+<td>RTX 3090 and A100 servers</td>
+<td>Wide availability in Public cloud (B200, H200, H100, A100, L40S, RTX6000, V100)</td>
+<td>High-performance GPUs (H100, A100, etc.)</td>
+<td>H100, H200, A100, V100, L40S, A6000, A10, RTX 4090, RTX 3090, A4000</td>
+<td>Primarily H100 available</td>
+<td>Wide selection (A100, H100, RTX GPUs)</td>
+<td>Various GPUs; up to 8 GPUs per instance</td>
+<td>T4, A100, H100</td>
+</tr>
+<tr>
+<td class="feature-col">Instance Types & Deployment Method</td>
+<td>On-demand and interruptible; Container-based</td>
+<td>On-demand only; Virtual Machines</td>
+<td>On-demand and interruptible; Container-based; Bidding available</td>
+<td>On-demand and interruptible; Virtual Machines; Bidding available</td>
+<td>On-demand and interruptible; Container-based</td>
+<td>On-demand only; Virtual machines</td>
+<td>On-demand only</td>
+<td>On-demand only; Virtual machines and bare metal</td>
+<td>Flexible deployment; Docker containers only</td>
+<td>On-demand; Virtual machines with dedicated IPv4</td>
+<td>On-demand, public cloud, and reserved instances; Custom cluster available</td>
+<td>High-end compute instances; Virtual Private Cloud</td>
+<td>On-demand and flexible</td>
+<td>On-demand; Decentralized orchestration</td>
+<td>On-demand; Containerized instances</td>
+<td>On-demand clusters</td>
+<td>On-demand; Pay-per-minute</td>
+</tr>
+<tr>
+<td class="feature-col">Team Budget & Access Control</td>
+<td>No per-user budget allocation; “dev” roles access full funds unless using gifted funds (2% commission). No individual usage tracking for team members.</td>
+<td>No per-user budget controls; Multi-user access via keys</td>
+<td>No per-user budget control; Minimal team management</td>
+<td>Separate organizations for budget control; no allocation of budget to a key</td>
+<td>Team accounts with individual budget allocation; Usage tracking;</td>
+<td>Organization-based accounts</td>
+<td>Willing to build what we want</td>
+<td>No per-user budget control</td>
+<td>-</td>
+<td>-</td>
+<td>No specific budget control mentioned</td>
+<td>No specific budget control mentioned</td>
+<td>-</td>
+<td>No specific budget control mentioned</td>
+<td>-</td>
+<td>No specific budget control mentioned</td>
+<td>-</td>
+</tr>
+<tr>
+<td class="feature-col">Refund Policy</td>
+<td>No refunds</td>
+<td>Refunds as cloud credits (12-month expiry)</td>
+<td>Refunds available on request</td>
+<td>Refunds with 5% commission - Remaining balances might be refunded to the administrative account for free?</td>
+<td>No refunds</td>
+<td>-</td>
+<td>-</td>
+<td>Refunds with 5% commission; Free to withdraw if multiple users using the same card</td>
+<td>-</td>
+<td>No refunds</td>
+<td>-</td>
+<td>Pro-rated refunds for unused services</td>
+<td>Refunds available</td>
+<td>-</td>
+<td>No refunds;</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td class="feature-col">Additional Fees & Billing</td>
+<td>No charges for adding funds; 2% gifting commission</td>
+<td>-</td>
+<td>Storage charges even with zero balance</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Stripe fee (2.9% + $0.30) on deposits only</td>
+<td>-</td>
+<td>No additional network charges</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Additional charges for cores ($0.06/vCPU/hr) and memory</td>
+</tr>
+<tr>
+<td class="feature-col">Savings Plans and Academic Discounts</td>
+<td>Custom offers; Up to [$25k free credits](https://www.runpod.io/pricing); Credit matching up to $5k available</td>
+<td>Case-by-case free credits (currently unavailable)</td>
+<td>Available but variable</td>
+<td>Reserved pricing for long-term rentals (minimum 1 month); Grant for [academic non-profit H100 usage](https://forms.gle/zfVC6r8A2xc3mUJB6)</td>
+<td>Discounts based on expected usage</td>
+<td>Reservation pricing available</td>
+<td>-</td>
+<td>Long-term project savings (min. $5k/month, not for on-demand GPUs)</td>
+<td>Competitive pricing through auctions; Up to $100,000 in developer grants; $10 credits upon sign up</td>
+<td>10h free credits for students/researchers</td>
+<td>Dynamic pricing for savings; custom offers available</td>
+<td>Discounts for annual payments; Trial credits available</td>
+<td>Available but variable</td>
+<td>$10 worth of credits for inference; University partnerships</td>
+<td>-</td>
+<td>Custom quotes for long-term commitments</td>
+<td>-</td>
+</tr>
+
+                </tbody>
+            </table>
+            <div class="note">
+                <p>'-' means no information available</p>
+            </div>
+        </div>
+        
+        <script>
+            $(document).ready(function() {
+                let table = $('#dataTable').DataTable({
+                    scrollX: true,
+                    paging: false,
+                    info: false,
+                    ordering: true,
+                    colReorder: true,
+                    order: [], // Don't apply initial sorting
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'colvis',
+                            text: 'Show/Hide Columns',
+                            columns: ':not(:first-child)'  // Don't allow hiding the first column
+                        }
+                    ],
+                    columnDefs: [
+                        { orderable: false, targets: 0 }  // Disable sorting on first column
+                    ],
+                    fixedColumns: {
+                        left: 1  // Fix the first column
+                    }
+                });
+                
+                // Custom search functionality
+                $('#search').on('keyup', function() {
+                    table.search($(this).val()).draw();
+                });
+            });
+        </script>
+    </body>
+    </html>
+    
